@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CyberSafe Teen - Scam Checker</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #e3f2fd;
+      color: #0d47a1;
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(13, 71, 161, 0.3);
+    }
+    h1 {
+      text-align: center;
+    }
+    textarea {
+      width: 100%;
+      height: 150px;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 2px solid #0d47a1;
+      resize: none;
+    }
+    button {
+      background-color: #0d47a1;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      margin-top: 10px;
+      cursor: pointer;
+      font-size: 18px;
+      border-radius: 5px;
+      width: 100%;
+    }
+    button:hover {
+      background-color: #08306b;
+    }
+    #result {
+      margin-top: 20px;
+      font-size: 18px;
+      min-height: 50px;
+    }
+    footer {
+      margin-top: 40px;
+      text-align: center;
+      font-size: 14px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <h1>CyberSafe Teen</h1>
+  <p>Paste a suspicious message below to check if it might be a scam.</p>
+  <textarea id="inputText" placeholder="Paste message here..."></textarea>
+  <button onclick="checkScam()">Check Message</button>
+  <div id="result"></div>
+
+  <footer>Â© 2025 CyberSafe Teen</footer>
+
+  <script>
+    function checkScam() {
+      const text = document.getElementById('inputText').value.toLowerCase();
+      const scamWords = ['password', 'send money', 'urgent', 'free gift', 'click link', 'winner', 'account locked', 'verify', 'claim prize', 'login', 'bank', 'transfer', 'giveaway'];
+      let foundWords = scamWords.filter(word => text.includes(word));
+
+      const resultDiv = document.getElementById('result');
+      if (foundWords.length > 0) {
+        resultDiv.innerHTML = `<span style="color: #d32f2f;">â ï¸ Warning: This message might be a scam. Watch out for these suspicious words: <b>${foundWords.join(', ')}</b></span>`;
+      } else if (text.trim() === '') {
+        resultDiv.innerHTML = `<span style="color: #555;">Please paste a message to check.</span>`;
+      } else {
+        resultDiv.innerHTML = `<span style="color: #388e3c;">â This message looks safe.</span>`;
+      }
+    }
+  </script>
+</body>
+</html>
