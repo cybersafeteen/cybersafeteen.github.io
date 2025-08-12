@@ -1,0 +1,121 @@
+DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CyberSafe Teen - Scam Checker</title>
+  <meta name="description" content="CyberSafe Teen helps teens detect scam messages online with a free, easy-to-use tool." />
+  <meta name="keywords" content="cybersecurity, scam checker, online safety, teens, phishing" />
+  <meta name="author" content="CyberSafe Teen" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #e3f2fd;
+      color: #0d47a1;
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(13, 71, 161, 0.3);
+    }
+    img.logo {
+      display: block;
+      margin: 0 auto 20px;
+      max-width: 150px;
+    }
+    h1 {
+      text-align: center;
+    }
+    textarea {
+      width: 100%;
+      height: 150px;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 2px solid #0d47a1;
+      resize: none;
+    }
+    button, a.cta-button {
+      background-color: #0d47a1;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      margin-top: 10px;
+      cursor: pointer;
+      font-size: 18px;
+      border-radius: 5px;
+      width: 100%;
+      display: inline-block;
+      text-align: center;
+      text-decoration: none;
+    }
+    button:hover, a.cta-button:hover {
+      background-color: #08306b;
+    }
+    #result {
+      margin-top: 20px;
+      font-size: 18px;
+      min-height: 50px;
+    }
+    section.education {
+      margin-top: 30px;
+      background: #f0f4f8;
+      padding: 15px;
+      border-radius: 8px;
+    }
+    section.education h2 {
+      color: #0d47a1;
+    }
+    footer {
+      margin-top: 40px;
+      text-align: center;
+      font-size: 14px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <!-- Replace "logo.png" with your uploaded logo file name or remove the line if you don't have a logo yet -->
+  <img src="logo.png" alt="CyberSafe Teen Logo" class="logo" />
+
+  <h1>CyberSafe Teen</h1>
+  <p>Paste a suspicious message below to check if it might be a scam.</p>
+
+  <textarea id="inputText" placeholder="Paste message here..."></textarea>
+  <button onclick="checkScam()">Check Message</button>
+
+  <a href="#" class="cta-button" onclick="document.getElementById('inputText').focus()">Try the Scam Checker Now</a>
+
+  <div id="result"></div>
+
+  <section class="education">
+    <h2>How to Spot a Scam</h2>
+    <ul>
+      <li>Urgent requests for money or passwords</li>
+      <li>Promises of free gifts or prizes</li>
+      <li>Suspicious links or unknown senders</li>
+      <li>Pressure to act quickly</li>
+    </ul>
+    <p>Learn more about staying safe online at <a href="https://staysafeonline.org" target="_blank" rel="noopener">StaySafeOnline.org</a>.</p>
+  </section>
+
+  <footer>Â© 2025 CyberSafe Teen</footer>
+
+  <script>
+    function checkScam() {
+      const text = document.getElementById('inputText').value.toLowerCase();
+      const scamWords = ['password', 'send money', 'urgent', 'free gift', 'click link', 'winner', 'account locked', 'verify', 'claim prize', 'login', 'bank', 'transfer', 'giveaway'];
+      let foundWords = scamWords.filter(word => text.includes(word));
+
+      const resultDiv = document.getElementById('result');
+      if (foundWords.length > 0) {
+        resultDiv.innerHTML = `<span style="color: #d32f2f;">â ï¸ Warning: This message might be a scam. Watch out for these suspicious words: <b>${foundWords.join(', ')}</b></span>`;
+      } else if (text.trim() === '') {
+        resultDiv.innerHTML = `<span style="color: #555;">Please paste a message to check.</span>`;
+      } else {
+        resultDiv.innerHTML = `<span style="color: #388e3c;">â This message looks safe.</span>`;
+      }
+    }
+  </script>
+</body>
+</html>
